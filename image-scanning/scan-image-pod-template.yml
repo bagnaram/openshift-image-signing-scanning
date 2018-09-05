@@ -17,7 +17,7 @@ objects:
         - name: BUILD_IMAGE
           value: ${BUILD_IMAGE}
       name: scan-image
-      image: image-sign-scan-base
+      image: 'openshift/image-inspector:latest'
       command:
         - "/bin/bash"
         - "-c"

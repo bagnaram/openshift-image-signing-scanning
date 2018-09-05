@@ -21,7 +21,7 @@ objects:
         - name: SIGNBY
           value: ${SIGN_BY}
       name: sign-image
-      image: image-sign-scan-base
+      image: image-sign-base
       command:
         - "/bin/bash"
         - "-c"
