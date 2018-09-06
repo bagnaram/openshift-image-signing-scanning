@@ -16,10 +16,10 @@ objects:
     type: image-scanning
   spec:
     source:
+          contextDir: image-scanning
           git:
             ref: master
             uri: https://github.com/bagnaram/openshift-image-signing-scanning.git
-            contextDir: image-scanning
     type: Git
     strategy:
       type: JenkinsPipeline

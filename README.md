@@ -91,9 +91,6 @@ Once the playbook completes, the OpenShift environment will be configured to han
 
 The image scanning pipeline stage will generate an OpenSCAP HTML report artifact. It is uploaded to Jenkins and attached to the completed pipeline job to be viewed. Be default Jenkins uses a very restrictive Content Security Policy (CSP) http://learnitsecurity.blogspot.com/p/content-security-policy-csp.html. This prevents the OpenSCAP HTML report from displaying properly in most browsers. In order to correct this, the CSP must be loosened in Jenkins. This is done based on the following procedures https://kb.froglogic.com/display/KB/Content+Security+Policy+(CSP)+for+Web+Report. 
 
-To change default Content Security Policy go to Manage Jenkins -> Script Console and type into console the following commands:
+To change default Content Security Policy modify the Jenkins DeploymentConfiguration and add the following environment variable.
 
-```
-System.clearProperty("hudson.model.DirectoryBrowserSupport.CSP");
-System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-same-origin allow-scripts; default-src 'self'; script-src * 'unsafe-eval'; img-src *; style-src * 'unsafe-inline'; font-src *");
-```
+`JENKINS_JAVA_OVERRIDES` : `-Dhudson.model.DirectoryBrowserSupport.CSP=\"sandbox\ allow-same-origin\ allow-scripts;\ default-src\ 'self';\ script-src\ *\ 'unsafe-eval';\ img-src\ *;\ style-src\ *\ 'unsafe-inline';font-src\ *\"`
